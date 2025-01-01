@@ -13,13 +13,7 @@ type User struct {
 }
 
 func GetUsers(w http.ResponseWriter, r *http.Request) {
-	db, err := db.Connectdb("./db/users.db")
-	if err != nil {
-		http.Error(w, "Failed to connect to databse", http.StatusInternalServerError)
-	}
-	defer db.Close()
-
-	rows, err := db.Query("SELECT id,name,email FROM users;")
+	rows, err := db.DB.Query("SELECT id,name,email FROM users;")
 	if err != nil {
 		http.Error(w, "Failed to query databse", http.StatusInternalServerError)
 		return
