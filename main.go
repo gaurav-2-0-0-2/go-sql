@@ -5,8 +5,11 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"log"
+	"go-sql/db"
 	"go-sql/controllers"
 )
+
 
 func GetHome(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "got / req\n")
@@ -14,6 +17,11 @@ func GetHome(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	err := db.Connectdb("./db/app.db")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer db.DB.Close()
 	http.HandleFunc("/", GetHome)
 	http.HandleFunc("/users", controllers.GetUsers)
 	fmt.Println("Server started at http://localhost:4000")
