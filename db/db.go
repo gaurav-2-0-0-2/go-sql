@@ -7,17 +7,19 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
-func Connectdb(path string) (*sql.DB, error) {
-	// Connecting to sqlite db
-	db, dberr := sql.Open("sqlite3", path)
+var DB *sql.DB
+
+func Connectdb(path string) error {
+	var dberr error
+	DB, dberr  = sql.Open("sqlite3", path)
 	if dberr != nil {
 		log.Fatal(dberr)
 	}
 
-	err := db.Ping()
+	err := DB.Ping()
 	if err != nil {
 		log.Fatal(err)
 	}
 	fmt.Printf("Connected to db successfully\n")
-	return db, nil
+	return nil
 }
