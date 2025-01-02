@@ -10,7 +10,6 @@ import (
 	"go-sql/controllers"
 )
 
-
 func GetHome(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "got / req\n")
 	fmt.Printf("got a req on /\n")
