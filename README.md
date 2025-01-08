@@ -9,5 +9,11 @@
 - run binary: `./main`
 - you can test it by running: `curl http://127.0.0.1:4000/users`
 
+### API-DOCS
+
+- **GET** `/users` : Get all users
+- **POST** `/create/user` : Creates a new user
+- **GET** `/user/<id>` : Get user by id
+
 Resource:
 - https://www.alexedwards.net/blog/how-to-properly-parse-a-json-request-body
