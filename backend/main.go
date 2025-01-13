@@ -16,15 +16,18 @@ func GetHome(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	// Connecting Database
 	err := db.Connectdb("./db/app.db")
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer db.DB.Close()
+	// Routes Handling
 	http.HandleFunc("/", GetHome)
 	http.HandleFunc("/users", controllers.GetAllUsers)
 	http.HandleFunc("/create/user", controllers.CreateUser)
 	http.HandleFunc("/user/", controllers.GetUserById)
+	// Starting Server
 	fmt.Println("Server started at http://localhost:4000")
 	ServerErr := http.ListenAndServe(":4000", nil)
 	if errors.Is(ServerErr, http.ErrServerClosed) {
