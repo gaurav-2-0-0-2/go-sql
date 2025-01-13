@@ -8,6 +8,7 @@ import (
 	"log"
 	"go-sql/db"
 	"go-sql/controllers"
+	"go-sql/middleware"
 )
 
 func GetHome(w http.ResponseWriter, r *http.Request) {
@@ -24,9 +25,9 @@ func main() {
 	defer db.DB.Close()
 	// Routes Handling
 	http.HandleFunc("/", GetHome)
-	http.HandleFunc("/users", controllers.GetAllUsers)
-	http.HandleFunc("/create/user", controllers.CreateUser)
-	http.HandleFunc("/user/", controllers.GetUserById)
+	http.HandleFunc("/users", middleware.CORS(controllers.GetAllUsers))
+	http.HandleFunc("/create/user", middleware.CORS(controllers.CreateUser))
+	http.HandleFunc("/user/", middleware.CORS(controllers.GetUserById))
 	// Starting Server
 	fmt.Println("Server started at http://localhost:4000")
 	ServerErr := http.ListenAndServe(":4000", nil)
