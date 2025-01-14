@@ -1,2 +1,2 @@
-main
-db/app.db
+backend/main
+backend/db/app.db
