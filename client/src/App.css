@@ -3,3 +3,11 @@
   align-items: center;
   gap: 10px;
 }
+
+.cuf{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+}
