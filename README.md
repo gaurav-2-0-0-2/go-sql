@@ -1,4 +1,4 @@
-### A simple example to connect Go server to sql database (sqlite)
+### A simple application consuming APIs written in Go
 
 - Ensure you have sqlite installed. if not install it according to your OS.<br>
 ***I am using Debian, the below command can also work on ubuntu/mint and similar distros*** 
